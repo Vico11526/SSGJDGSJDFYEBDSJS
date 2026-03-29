@@ -1,0 +1,107 @@
+body{
+    color: #d6c6ff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at bottom, #0a0614, #1a0f2e, #120824);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== ESTRELLAS ===== */
+.stars,
+.stars2,
+.stars3{
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 0;
+    background-repeat: repeat;
+    animation: starsMove linear infinite;
+}
+
+.stars{
+    background-image:
+        radial-gradient(1px 1px at 10px 20px, #cbb3ff, transparent),
+        radial-gradient(1px 1px at 80px 120px, #e0ccff, transparent),
+        radial-gradient(1px 1px at 150px 300px, #bda0ff, transparent);
+    background-size: 400px 400px;
+    animation-duration: 160s;
+    opacity: .7;
+}
+
+.stars2{
+    background-image:
+        radial-gradient(2px 2px at 50px 80px, #d6b3ff, transparent),
+        radial-gradient(2px 2px at 200px 150px, #e6ccff, transparent);
+    background-size: 600px 600px;
+    animation-duration: 220s;
+    opacity: .5;
+}
+
+.stars3{
+    background-image:
+        radial-gradient(3px 3px at 100px 200px, #f0e6ff, transparent);
+    background-size: 800px 800px;
+    animation-duration: 300s;
+    opacity: .3;
+}
+
+/* TEXTO */
+.greetings span{
+    display: inline-block;
+    animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow{
+    0%, 100%{
+        color: #f3eaff;
+        text-shadow:
+            0 0 12px #a970ff,
+            0 0 40px #7b2cff,
+            0 0 80px #5a00ff;
+    }
+    10%, 90%{
+        color: #2a2438;
+        text-shadow: none;
+    }
+}
+
+/* DESCRIPCIÓN */
+.description{
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #cbb3ff;
+}
+
+/* BOTÓN */
+.botones{
+    padding: 14px 40px;
+    border-radius: 80px;
+    background: linear-gradient(45deg, #7b2cff, #c86bff);
+    border: none;
+    box-shadow: 0 0 25px rgba(123,44,255,.7);
+    transition: all .4s ease;
+    animation: pulse 2s infinite;
+}
+
+.botones:hover{
+    transform: scale(1.15);
+    box-shadow: 0 0 60px rgba(168,85,247,1);
+}
+
+@keyframes pulse{
+    0%{ box-shadow: 0 0 20px rgba(123,44,255,.5); }
+    50%{ box-shadow: 0 0 50px rgba(168,85,247,1); }
+    100%{ box-shadow: 0 0 20px rgba(123,44,255,.5); }
+}
+
+.botones a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}

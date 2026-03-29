@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+
+*{
+    font-family: 'Poppins', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: #d6c6ff;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at bottom, #0a0614, #1a0f2e, #120824);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ESTRELLAS */
+.stars, .stars2, .stars3{
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 0;
+    animation: starsMove linear infinite;
+}
+
+.stars{
+    background-image:
+        radial-gradient(1px 1px at 10px 20px, #cbb3ff, transparent),
+        radial-gradient(1px 1px at 80px 120px, #e0ccff, transparent);
+    animation-duration: 160s;
+    opacity: .7;
+}
+
+.stars2{
+    background-image:
+        radial-gradient(2px 2px at 50px 80px, #d6b3ff, transparent);
+    animation-duration: 220s;
+    opacity: .5;
+}
+
+.stars3{
+    background-image:
+        radial-gradient(3px 3px at 100px 200px, #f0e6ff, transparent);
+    animation-duration: 300s;
+    opacity: .3;
+}
+
+@keyframes starsMove{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(-800px); }
+}
+
+/* PARTICULAS */
+.particles{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.particles::before,
+.particles::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, #d6b3ff 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: floatParticles 20s linear infinite;
+    opacity: 0.3;
+}
+
+.particles::after{
+    animation-duration: 35s;
+    opacity: 0.2;
+}
+
+@keyframes floatParticles{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(-200px); }
+}
+
+/* CONTENIDO */
+.content{
+    position: relative;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* AURA */
+.content::before{
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(168,85,247,0.4), transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: floatAura 6s ease-in-out infinite;
+}
+
+@keyframes floatAura{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-20px); }
+}
+
+/* TEXTO */
+.greetings{
+    font-size: 6rem;
+    font-weight: 900;
+}
+
+.greetings span{
+    display: inline-block;
+    animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow{
+    0%,100%{
+        color: #f3eaff;
+        text-shadow: 0 0 10px #a970ff, 0 0 40px #7b2cff;
+        transform: scale(1);
+    }
+    50%{
+        color: #fff;
+        text-shadow: 0 0 20px #c86bff, 0 0 80px #7b2cff;
+        transform: scale(1.1);
+    }
+}
+
+.description{
+    margin: 20px;
+    font-size: 1.4rem;
+}
+
+/* TARJETA POLAROID */
+.polaroid-container{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 35px auto;
+    perspective: 800px;
+}
+
+.polaroid{
+    background: #f5f2f0;
+    padding: 14px 14px 50px 14px;
+    box-shadow:
+        0 4px 20px rgba(123, 44, 255, 0.3),
+        0 0 60px rgba(168, 85, 247, 0.15),
+        inset 0 0 30px rgba(0,0,0,0.03);
+    transform: rotate(-3deg);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.5s ease;
+    cursor: default;
+    position: relative;
+    animation: polaroidFloat 5s ease-in-out infinite;
+    width: 260px;
+}
+
+.polaroid:nth-child(2){
+    transform: rotate(2deg);
+    animation-delay: -1.5s;
+}
+
+.polaroid:nth-child(3){
+    transform: rotate(-1deg);
+    animation-delay: -3s;
+}
+
+.polaroid:hover{
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+    box-shadow:
+        0 12px 40px rgba(123, 44, 255, 0.5),
+        0 0 80px rgba(168, 85, 247, 0.25);
+}
+
+@keyframes polaroidFloat{
+    0%, 100%{ transform: translateY(0) rotate(-3deg); }
+    50%{ transform: translateY(-8px) rotate(-3deg); }
+}
+
+.polaroid:nth-child(2){
+    animation-name: polaroidFloat2;
+}
+@keyframes polaroidFloat2{
+    0%, 100%{ transform: translateY(0) rotate(2deg); }
+    50%{ transform: translateY(-8px) rotate(2deg); }
+}
+
+.polaroid:nth-child(3){
+    animation-name: polaroidFloat3;
+}
+@keyframes polaroidFloat3{
+    0%, 100%{ transform: translateY(0) rotate(-1deg); }
+    50%{ transform: translateY(-8px) rotate(-1deg); }
+}
+
+.polaroid-photo{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: #1a0f2e;
+    border: none;
+}
+
+.polaroid-caption{
+    color: #4a3a5c;
+    font-size: 0.95rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Efecto tape en la esquina */
+.polaroid::after{
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    width: 50px;
+    height: 20px;
+    background: rgba(200, 107, 255, 0.15);
+    transform: rotate(3deg);
+    border-radius: 2px;
+    backdrop-filter: blur(2px);
+}
+
+/* BOTON */
+.botones{
+    padding: 14px 40px;
+    border-radius: 80px;
+    background: linear-gradient(45deg, #7b2cff, #c86bff);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.botones a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.botones::before{
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+    top: -50%;
+    left: -50%;
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine{
+    0%{ transform: translateX(-100%) rotate(45deg); }
+    100%{ transform: translateX(100%) rotate(45deg); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px){
+    .greetings{ font-size: 3.5rem; }
+    .description{ font-size: 1.1rem; }
+    .polaroid-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .polaroid{
+        width: min(75vw, 260px);
+    }
+}
+
+@media (max-width: 400px){
+    .greetings{ font-size: 2.5rem; }
+    .description{ font-size: 0.95rem; }
+    .polaroid{
+        width: min(80vw, 240px);
+        padding: 10px 10px 40px 10px;
+    }
+    .polaroid-caption{ font-size: 0.85rem; }
+    .botones{ padding: 12px 32px; }
+    .content{ padding: 30px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+<div class="particles"></div>
+
+<div class="content">
+    <div class="greetings">
+        <span>H</span>
+        <span>o</span>
+        <span>l</span>
+        <span>a</span>
+        <span>❤</span>
+    </div>
+
+    <div class="description">
+        TE AMO 
+    </div>
+
+    <!-- TARJETAS POLAROID -->
+    <div class="polaroid-container">
+
+        <!-- Tarjeta 1 -->
+        <div class="polaroid">
+            <img class="polaroid-photo" src="img/nico.png" alt="Foto 1">
+            <div class="polaroid-caption">Mi persona favorita ✨</div>
+        </div>
+
+        <!-- Tarjeta 2 (opcional, puedes duplicar o eliminar) -->
+        <div class="polaroid">
+            <img class="polaroid-photo" src="img/andre.png" alt="Foto 2">
+            <div class="polaroid-caption">Mi sonrisa favorita ♥️</div>
+        </div>
+ 
+    </div>
+
+    <button class="botones">
+        <a href="flower.html">CLICK AQUÍ</a>
+    </button>
+</div>
+
+</body>
+</html>
